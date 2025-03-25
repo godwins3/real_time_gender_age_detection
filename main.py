@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 import asyncio
 import datetime
 from motor.motor_asyncio import AsyncIOMotorClient
