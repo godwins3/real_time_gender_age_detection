@@ -7,7 +7,7 @@ import os
 
 # MongoDB Connection
 client = AsyncIOMotorClient("mongodb+srv://code_god:1MHwEGptmYQF1Grh@aoristai.1ofe1s4.mongodb.net/?retryWrites=true&w=majority&appName=AoristAI")
-db = client["marketing_insights"]
+db = client["agora"]
 collection = db["viewer_data"]
 
 #load 'opencv_face_detector.pbtxt' and 'opencv_face_detector_uint8.pb'
