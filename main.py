@@ -6,7 +6,8 @@ from motor.motor_asyncio import AsyncIOMotorClient
 # MongoDB Connection
 client = AsyncIOMotorClient("mongodb://localhost:27017")
 db = client["marketing_insights"]
-collection = db["viewer_data"]
+id = 0
+collection = db[f"viewer_data {id}"]
 
 # Load models
 faceProto = 'opencv_face_detector.pbtxt'
@@ -82,11 +83,16 @@ async def analyze_webcam():
             cv2.putText(frame, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
 
             # Log Data
-            timestamp = datetime.datetime.now().isoformat()
-            data = {"timestamp": timestamp, "gender": gender, "age": age}
-            await collection.insert_one(data)
+            if gender =="0-2":
+                pass
+            elif gender =="4-6":
+                pass
+            else:
+                timestamp = datetime.datetime.now().isoformat()
+                data = {"timestamp": timestamp, "gender": gender, "age": age}
+                await collection.insert_one(data)
 
-        cv2.imshow('ProjectPraise Age-Gender', frame)
+        cv2.imshow('Age-Gender', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
