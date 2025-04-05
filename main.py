@@ -7,7 +7,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 client = AsyncIOMotorClient("mongodb+srv://code_god:1MHwEGptmYQF1Grh@aoristai.1ofe1s4.mongodb.net/?retryWrites=true&w=majority&appName=AoristAI")
 db = client["marketing_insights"]
 id = 0
-collection = db[f"viewer_data {id}"]
+collection = db[f"viewer_data"]
 
 # Load models
 faceProto = 'opencv_face_detector.pbtxt'
@@ -89,7 +89,7 @@ async def analyze_webcam():
                 pass
             else:
                 timestamp = datetime.datetime.now().isoformat()
-                data = {"timestamp": timestamp, "gender": gender, "age": age}
+                data = {"timestamp": timestamp, "gender": gender, "age": age, "device_id": id}
                 await collection.insert_one(data)
 
         cv2.imshow('Age-Gender', frame)
