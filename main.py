@@ -83,9 +83,9 @@ async def analyze_webcam():
             cv2.putText(frame, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
 
             # Log Data
-            if gender =="0-2":
+            if gender =="(0-2)":
                 pass
-            elif gender =="4-6":
+            elif gender =="(4-6)":
                 pass
             else:
                 timestamp = datetime.datetime.now().isoformat()
